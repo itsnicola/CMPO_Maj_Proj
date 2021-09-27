@@ -1,10 +1,5 @@
 class Saturn extends Planet {
-    constructor(id) {
-        super(id);
-    }
-
-    draw() {
-        ambientLight(255, 175, 0);
-        sphere();
+    constructor(id, color, translation, scale) {
+        super(id, color, translation, scale);
     }
 }
