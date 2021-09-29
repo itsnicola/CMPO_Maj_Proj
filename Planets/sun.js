@@ -14,4 +14,6 @@ class Sun extends Planet {
             sphere();
         pop();
     }
+
+    move() {} //overrides move() function in Planet, so that sun does not move
 }
