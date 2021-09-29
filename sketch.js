@@ -1,7 +1,7 @@
 let planets = [];
 
 function setup() {
-  createCanvas(1525, 750, WEBGL);
+  createCanvas(1525, 750, WEBGL); //TODO: scaling!
   noStroke();
 
   // values for scale calculated from https://www.exploratorium.edu/ronh/solar_system/ 
@@ -9,7 +9,8 @@ function setup() {
   // (this is because the planets are actually quite big, hard to map to a single screen)
 
   // values for speed scaled down from https://en.wikipedia.org/wiki/Orbital_speed 
-  
+
+  //TODO: move color, scale?, speed to individual files? would make this cleaner but might make it harder to debug
   planets.push(new Sun('sun', [253,227,1], [0, 0], 1)); //sun does not have speed as it does not move
   planets.push(new Mercury('mercury', [240,180,0], [-117, 25, -75], 0.1747, 4.79));
   planets.push(new Venus('venus', [123,234,186], [-123, 50, -100], 0.4348, 3.5));
@@ -23,6 +24,8 @@ function setup() {
 
   angleMode(DEGREES); // this caused me so many issues. Note to self: do not remove!!
 }
+
+    //TODO: fullscreen scaling - make all values relative. More zoomed out? (wasn't there a function that allowed u to zoom with the mouse???)
 
 function draw() {
   background(0);
