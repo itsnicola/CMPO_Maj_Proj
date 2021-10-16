@@ -1,6 +1,8 @@
 class Sun extends Planet {
-    constructor(id, color, translation, scale) {
+    constructor(id, color, translation, scale, soundFile) {
         super(id, color, translation, scale);
+        this.soundFile = soundFile;
+        this.soundFile.playMode('untilDone');
     }
 
     draw() {
@@ -16,4 +18,11 @@ class Sun extends Planet {
     }
 
     move() {} //overrides move() function in Planet, so that sun does not move
+
+    playSound() {
+        //sun starts playing regardless
+        if (!this.soundFile.isPlaying()) { 
+            this.soundFile.play();
+        }
+    }
 }

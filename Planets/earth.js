@@ -1,14 +1,12 @@
 class Earth extends Planet {
-    constructor(id, color, translation, scale, speed) {
+    constructor(id, color, translation, scale, speed, soundFile) {
         super(id, color, translation, scale, speed);
+        this.soundFile = soundFile;
     }
 
-    // draw() {
-    //     push();
-    //         ambientLight(0, 70, 255);
-    //         translate(-100, 50);
-    //         scale(0.5, 0.5);
-    //         sphere();
-    //     pop();
-    // }
+    playSound() {
+        if (this.starDist < 100 && !this.playing) {
+            this.soundFile.play();
+            this.playing = true;
+        }    }
 }
