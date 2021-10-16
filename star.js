@@ -59,7 +59,8 @@ class Star {
             //translate to mouse position (calibrated to screen size)
             let mX = mouseX - (width / 2);
             let mY = mouseY - (height / 2);
-            translate(mX, mY, mouseY); //z axis = proportional to mouseY
+            this.pos = createVector(mX, mY);
+            translate(mX, mY); //z axis = proportional to mouseY
 
             //scale down
             var scaleFactor = 0.06;

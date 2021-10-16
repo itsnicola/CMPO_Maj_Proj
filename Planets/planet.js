@@ -1,10 +1,13 @@
 class Planet {
-    constructor(id, color, radius, scale, speed) {
+    constructor(id, radius) {
         this.id = id;
-        this.color = color;
         this.translation = [0,0,0];
-        this.scale = scale;
-        this.speed = speed;
+
+        //values set in subclasses
+        this.color = 0;
+        this.scale = 0;
+        this.speed = 0;
+
         this.xRadius = radius[0];
         this.yRadius = radius[1];
         this.zRadius = radius[2];
