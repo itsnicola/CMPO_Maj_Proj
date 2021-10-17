@@ -25,13 +25,6 @@ function setup() {
   noStroke();
   noCursor();
 
-  // values for scale calculated from https://www.exploratorium.edu/ronh/solar_system/ 
-  // for scale, used a combination of sun = 5in & sun = 50in, whatever made sense
-  // (this is because the planets are actually quite big, hard to map to a single screen)
-
-  // values for speed scaled down from https://en.wikipedia.org/wiki/Orbital_speed 
-  //[these values are in each Planet's class]
-
   // start position depends on window height
   let startX = -117;
   let endX = height - 100;
@@ -70,7 +63,6 @@ function setup() {
   x -= step;
   y += yStep;
   planets.push(new Pluto('pluto', [x, y, -75], soundFiles[9]));
-  console.log(y);
 
   star = new Star();
 

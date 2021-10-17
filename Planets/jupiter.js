@@ -15,6 +15,9 @@ class Jupiter extends Planet {
     playSound() {
         this.soundFile.loop();
 
+        let panning = map(star.pos.x, -(width / 2), (width / 2), 1.0, -1.0);
+        this.soundFile.pan(panning);
+
         let max = sqrt(pow(width / 2, 2) + pow(height / 2, 2));
         let amp = map(this.starDist, 0, max, 1, 0);
 

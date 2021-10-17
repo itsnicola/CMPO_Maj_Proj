@@ -12,3 +12,9 @@ Neptune: https://soundcloud.com/nasa/chorus-radio-waves-within-earths-atmosphere
 Pluto: https://soundcloud.com/nasa/sputnik-beep?in=nasa/sets/solar-system-beyond-sounds
 
 Where possible I used sounds that corresponded to the correct planet. In the case that I couldn't find a sound, I prioritised finding a sound that I thought blended well with the others. 
+
+
+Values for scale calculated from https://www.exploratorium.edu/ronh/solar_system/ 
+I used a combination of sun = 5in & sun = 50in, because the planets are actually quite big and hard to realistically map to a single screen
+
+Values for speed scaled down from https://en.wikipedia.org/wiki/Orbital_speed 
