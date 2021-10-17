@@ -39,4 +39,9 @@ class Planet {
         this.theta += this.speed;
         this.phi += this.speed;
     }
+
+    setOnlyPlanet() {
+        mutePlanets();
+        this.soundFile.setVolume(1, 0.2);
+    }
 }

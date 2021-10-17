@@ -5,6 +5,8 @@ class Sun extends Planet {
         this.soundFile.playMode('untilDone');
         this.soundFile.loop();
 
+        this.muted = false;
+
         this.color = [253,227,1];
         this.scale = 1;
     }
@@ -24,10 +26,19 @@ class Sun extends Planet {
     move() {} //overrides move() function in Planet, so that sun does not move
 
     playSound() {
-        let max = sqrt(pow(width / 2, 2) + pow(height / 2, 2));
-        let amp = map(this.starDist, 0, max, 1, 0);
-        //console.log(this.starDist, amp);
-        this.soundFile.setVolume(amp);
+        if (!this.muted) {
+            let max = sqrt(pow(width / 2, 2) + pow(height / 2, 2));
+            let amp = map(this.starDist, 0, max, 1, 0);
+            //console.log(this.starDist, amp);
+            this.soundFile.setVolume(amp);
+            //this.soundFile.setVolume(0); //turn off for testing
+        }
+
+        if (this.starDist < 50) { //circle = 50x50
+            this.setOnlyPlanet();
+        } else {
+            unmutePlanets();
+        }
         
         if (!this.soundFile.isPlaying()) { 
             this.soundFile.play();

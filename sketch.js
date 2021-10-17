@@ -26,6 +26,7 @@ function setup() {
   // (this is because the planets are actually quite big, hard to map to a single screen)
 
   // values for speed scaled down from https://en.wikipedia.org/wiki/Orbital_speed 
+  //[these values are in each Planet's class]
 
   // start position depends on window height
   let startX = -117;
@@ -90,11 +91,20 @@ function draw() {
   for (let i = 0; i < planets.length; i++) {
     planets[i].playSound();
   }
-  //star.update();
 }
 
-function getY(offset) {
-  return (height - offset) / 2;
+//mute all the planets
+function mutePlanets() {
+  for (let i = 0; i < planets.length; i++) {
+    planets[i].soundFile.setVolume(0, 0.2);
+    planets[i].muted = true;
+  }
+}
+
+function unmutePlanets() {
+  for (let i = 0; i < planets.length; i++) {
+    planets[i].muted = false;
+  }
 }
 
 function windowResized() {

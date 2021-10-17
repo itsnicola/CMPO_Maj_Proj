@@ -2,7 +2,7 @@ class Pluto extends Planet {
     constructor(id, radius, soundFile) {
         super(id, radius);
         this.soundFile = soundFile;
-        this.soundFile.loop();
+        //this.soundFile.loop();
         this.soundFile.playMode('untilDone');
 
         this.color = [217,245,255];
@@ -15,6 +15,7 @@ class Pluto extends Planet {
         let amp = map(this.starDist, 0, max, 1, 0);
         //console.log(this.starDist, amp);
         this.soundFile.setVolume(amp);
+        this.soundFile.setVolume(0); //turn off for testing
         
         if (!this.soundFile.isPlaying()) { 
             //this.soundFile.play();
