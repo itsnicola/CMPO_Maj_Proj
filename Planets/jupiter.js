@@ -1,9 +1,6 @@
 class Jupiter extends Planet {
     constructor(id, radius, soundFile) {
-        super(id, radius);
-        this.soundFile = soundFile;
-        this.soundFile.playMode('untilDone');
-        //this.soundFile.loop();
+        super(id, radius, soundFile);
 
         this.color = [255,160,67];
         this.scale = 0.5136;
@@ -24,14 +21,14 @@ class Jupiter extends Planet {
         this.env.scale(0, 1, amp, 0); //controls amplitude
 
         let rate = 0;
-        if (this.starDist < 100) { rate = 10; }
-        else if (this.starDist < 200) { rate = 20; }
-        else if (this.starDist < 300) { rate = 30; }
-        else if (this.starDist < 400) { rate = 40; }
+        if (this.starDist < 100) { rate = 4; }
+        else if (this.starDist < 200) { rate = 10; }
+        else if (this.starDist < 300) { rate = 20; }
+        else if (this.starDist < 400) { rate = 30; }
         else { rate = 60; }
 
         if (frameCount % rate === 0) {
-            //this.env.play();
+            this.env.play();
         }
     }
 }

@@ -89,7 +89,9 @@ function draw() {
   star.draw();
 
   for (let i = 0; i < planets.length; i++) {
-    planets[i].playSound();
+    if (planets[i].id === 'jupiter') {
+      planets[i].playSound();
+    }
   }
 }
 
