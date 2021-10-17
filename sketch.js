@@ -2,6 +2,7 @@ let planets = [];
 let star;
 let soundFiles = [];
 let spawnedPlanets = ['sun'];
+let font;
 
 function preload() {
   soundFormats('mp3', 'wav');
@@ -15,6 +16,8 @@ function preload() {
   soundFiles.push(loadSound('assets/uranus.mp3')); //Uranus
   soundFiles.push(loadSound('assets/neptune.mp3')); //Neptune
   soundFiles.push(loadSound('assets/pluto.mp3')); //Pluto
+
+  font = loadFont('assets/LouisGeorgeCafe.ttf');
 }
 
 function setup() {
@@ -60,7 +63,7 @@ function setup() {
   planets.push(new Saturn('saturn', [x, y, -75], soundFiles[6]));
   x -= step;
   y += yStep;
-  planets.push(new Uranus('uranus', [x, y, -75], soundFiles[7]));
+  //planets.push(new Uranus('uranus', [x, y, -75], soundFiles[7]));
   x -= step;
   y += yStep;
   planets.push(new Neptune('neptune', [x, y, -75], soundFiles[8]));
@@ -72,6 +75,9 @@ function setup() {
   star = new Star();
 
   angleMode(DEGREES); // this caused me so many issues. Note to self: do not remove!!
+
+  textFont(font);
+  textSize(20);
 }
 
 function draw() {
@@ -93,6 +99,14 @@ function draw() {
 
   //draw the star
   star.draw();
+
+  //draw instructions
+  fill(255);
+
+  push();
+    text("Press 'Enter' to spawn a planet", -(width / 2) + 50, (height / 2) - 75);
+    text("Press 'Backspace' to despawn a planet", -(width / 2) + 50, (height / 2) - 50);
+  pop();
 }
 
 //mute all the planets
