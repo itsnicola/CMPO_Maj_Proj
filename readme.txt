@@ -1,3 +1,5 @@
+Available on GitHub: https://github.com/itsnicola/CMPO_Maj_Proj
+
 Sounds used for each planet: 
 
 Sun: https://soundcloud.com/nasa/08-brian-cook-raw-velocity-0-6 
