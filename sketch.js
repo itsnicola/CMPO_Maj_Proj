@@ -13,7 +13,7 @@ function preload() {
   soundFiles.push(loadSound('assets/mars.wav')); //Mars
   soundFiles.push(loadSound('assets/jupiter.mp3')); //Jupiter
   soundFiles.push(loadSound('assets/saturn.mp3')); //Saturn
-  soundFiles.push(loadSound('assets/uranus.mp3')); //Uranus
+  soundFiles.push(loadSound('assets/uranus.wav')); //Uranus
   soundFiles.push(loadSound('assets/neptune.mp3')); //Neptune
   soundFiles.push(loadSound('assets/pluto.mp3')); //Pluto
 
@@ -63,7 +63,7 @@ function setup() {
   planets.push(new Saturn('saturn', [x, y, -75], soundFiles[6]));
   x -= step;
   y += yStep;
-  //planets.push(new Uranus('uranus', [x, y, -75], soundFiles[7]));
+  planets.push(new Uranus('uranus', [x, y, -75], soundFiles[7]));
   x -= step;
   y += yStep;
   planets.push(new Neptune('neptune', [x, y, -75], soundFiles[8]));
