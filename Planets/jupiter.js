@@ -23,6 +23,9 @@ class Jupiter extends Planet {
 
         this.env.scale(0, 1, amp, 0); //controls amplitude
 
+        let playbackRate = map(this.starDist, 0.1, max, 1.5, 0);
+        this.soundFile.rate(playbackRate);
+
         let rate = 0;
         if (this.starDist < 100) { rate = 4; }
         else if (this.starDist < 200) { rate = 10; }

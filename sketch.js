@@ -3,6 +3,7 @@ let star;
 let soundFiles = [];
 let spawnedPlanets = ['sun'];
 let font;
+let img;
 
 function preload() {
   soundFormats('mp3', 'wav');
@@ -18,6 +19,8 @@ function preload() {
   soundFiles.push(loadSound('assets/pluto.mp3')); //Pluto
 
   font = loadFont('assets/LouisGeorgeCafe.ttf');
+
+  img = loadImage('assets/shine.gif');
 }
 
 function setup() {
@@ -64,7 +67,7 @@ function setup() {
   y += yStep;
   planets.push(new Pluto('pluto', [x, y, -75], soundFiles[9]));
 
-  star = new Star();
+  star = new Star(img);
 
   angleMode(DEGREES); // this caused me so many issues. Note to self: do not remove!!
 
@@ -84,7 +87,6 @@ function draw() {
       planets[i].draw();
       //calculate distance to each planet
       planets[i].starDist = star.distanceTo(planets[i]);
-
       planets[i].playSound();
     }
   }
@@ -94,25 +96,10 @@ function draw() {
 
   //draw instructions
   fill(255);
-
   push();
     text("Press 'Enter' to spawn a planet", -(width / 2) + 50, (height / 2) - 75);
     text("Press 'Backspace' to despawn a planet", -(width / 2) + 50, (height / 2) - 50);
   pop();
-}
-
-//mute all the planets
-function mutePlanets() {
-  for (let i = 0; i < planets.length; i++) {
-    planets[i].soundFile.setVolume(0, 0.2);
-    planets[i].muted = true;
-  }
-}
-
-function unmutePlanets() {
-  for (let i = 0; i < planets.length; i++) {
-    planets[i].muted = false;
-  }
 }
 
 function keyPressed() {
@@ -123,7 +110,7 @@ function keyPressed() {
     }
   } else if (keyCode === BACKSPACE) {
     if (spawnedPlanets.length > 1) { //if more than just the sun spawned
-      console.log("removing" + planets[spawnedPlanets.length - 1].id);
+      console.log("removing " + planets[spawnedPlanets.length - 1].id);
       planets[spawnedPlanets.length - 1].soundFile.stop(); //stop playing sound
       spawnedPlanets.splice(spawnedPlanets.length - 1, 1); //remove from spawned array
     }

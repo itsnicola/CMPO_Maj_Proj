@@ -42,24 +42,18 @@ class Planet {
         this.phi += this.speed;
     }
 
-    //Generic method to play sound. Overriden where something else is done -- jupiter & pluto
+    //Generic method to play sound. Overriden where something else is done -- sun, earth, jupiter
     playSound() {
         this.soundFile.loop();
-        
+        let max = sqrt(pow(width / 2, 2) + pow(height / 2, 2));
 
         if (!this.muted) {
-            let max = sqrt(pow(width / 2, 2) + pow(height / 2, 2));
             let amp = map(this.starDist, 0, max, 0.9, 0);
-            //console.log(this.starDist, amp);
             this.soundFile.setVolume(amp);
-            //this.soundFile.setVolume(0); //turn off for testing
         }
 
-        // if (this.starDist < 50 * this.scale) { //circle = 50x50
-        //     this.setOnlyPlanet();
-        // } else {
-        //     unmutePlanets();
-        // }
+        let playbackRate = map(this.starDist, 0.1, max, 1.5, 0);
+        this.soundFile.rate(playbackRate);
 
         let panning = map(star.pos.x, -(width / 2), (width / 2), 1.0, -1.0);
         this.soundFile.pan(panning);
@@ -67,10 +61,5 @@ class Planet {
         if (!this.soundFile.isPlaying()) { 
             this.soundFile.play();
         }
-    }
-
-    setOnlyPlanet() {
-        mutePlanets();
-        this.soundFile.setVolume(1, 0.2);
     }
 }
