@@ -53,7 +53,7 @@ class Planet {
             //this.soundFile.setVolume(0); //turn off for testing
         }
 
-        if (this.starDist < 50) { //circle = 50x50
+        if (this.starDist < 50 * this.scale) { //circle = 50x50
             this.setOnlyPlanet();
         } else {
             unmutePlanets();

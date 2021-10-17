@@ -1,6 +1,7 @@
 let planets = [];
 let star;
 let soundFiles = [];
+let spawnedPlanets = ['sun'];
 
 function preload() {
   soundFormats('mp3', 'wav');
@@ -79,20 +80,19 @@ function draw() {
   planets[0].draw(); //draw the sun first
 
   //move and draw all the planets
-  for (var i = planets.length - 1; i >= 0; i--) {
+  for (let i = 0; i < planets.length; i++) {
+    if (spawnedPlanets.includes(planets[i].id)) {
       planets[i].move();
       planets[i].draw();
       //calculate distance to each planet
       planets[i].starDist = star.distanceTo(planets[i]);
-  }
 
-  star.draw();
-
-  for (let i = 0; i < planets.length; i++) {
-    if (planets[i].id === 'jupiter') {
       planets[i].playSound();
     }
   }
+
+  //draw the star
+  star.draw();
 }
 
 //mute all the planets
@@ -106,6 +106,21 @@ function mutePlanets() {
 function unmutePlanets() {
   for (let i = 0; i < planets.length; i++) {
     planets[i].muted = false;
+  }
+}
+
+function keyPressed() {
+  if (keyCode === ENTER) {
+    if (spawnedPlanets.length < planets.length) { //if not all planets spawned
+      console.log("pushing " + planets[spawnedPlanets.length].id);
+      spawnedPlanets.push(planets[spawnedPlanets.length].id); //add next planet
+    }
+  } else if (keyCode === BACKSPACE) {
+    if (spawnedPlanets.length > 1) { //if more than just the sun spawned
+      console.log("removing" + planets[spawnedPlanets.length - 1].id);
+      planets[spawnedPlanets.length - 1].soundFile.stop(); //stop playing sound
+      spawnedPlanets.splice(spawnedPlanets.length - 1, 1); //remove from spawned array
+    }
   }
 }
 
